@@ -1,0 +1,53 @@
+From fbba504cd5e1a74d528a41a11a7b82297cd7da74 Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <nicoddemus@gmail.com>
+Date: Thu, 26 Aug 2021 09:26:51 -0300
+Subject: [PATCH 1/2] Allow pluggy >=1.0
+
+Now that pluggy 1.0 has been released, we can allow pluggy 1.0 with new pytest versions.
+---
+ setup.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index f919a94..5c69005 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -44,7 +44,7 @@ install_requires =
+ 	attrs>=19.2.0
+ 	iniconfig
+ 	packaging
+-	pluggy>=0.12,<1.0.0a1
++	pluggy>=0.12,<2.0
+ 	py>=1.8.2
+ 	toml
+ 	atomicwrites>=1.0;sys_platform=="win32"
+
+
+From 109bc2649d8f1573e91f281d1a62e95dee0c2cc5 Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <nicoddemus@gmail.com>
+Date: Thu, 26 Aug 2021 09:33:50 -0300
+Subject: [PATCH 2/2] Adapt docs references to use pluggy 1.0
+
+Also use the intersphinx reference instead of the class directly.
+---
+ doc/en/reference/reference.rst | 5 +----
+ doc/en/requirements.txt        | 1 +
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/doc/en/reference.rst b/doc/en/reference.rst
+index 8aa95ca..346c4fa 100644
+--- a/doc/en/reference.rst
++++ b/doc/en/reference.rst
+@@ -920,11 +920,7 @@ TestReport
+ _Result
+ ~~~~~~~
+ 
+-Result used within :ref:`hook wrappers <hookwrapper>`.
+-
+-.. autoclass:: pluggy.callers._Result
+-.. automethod:: pluggy.callers._Result.get_result
+-.. automethod:: pluggy.callers._Result.force_result
++Result object used within :ref:`hook wrappers <hookwrapper>`, see :py:class:`_Result in the pluggy documentation <pluggy._callers._Result>` for more information.
+ 
+ Global Variables
+ ----------------

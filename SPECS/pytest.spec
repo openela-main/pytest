@@ -1,10 +1,15 @@
 Name:           pytest
 Version:        6.2.2
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://pytest.org
 Source0:        %{pypi_source}
+
+# Allow pluggy >=1.0
+# Merged upstream, https://github.com/pytest-dev/pytest/pull/9040
+# Rebased slightly 
+Patch:          9040.patch
 
 # When building pytest for the first time with new Python version
 # we might not yet have all the BRs, those conditionals allow us to do that.
@@ -158,6 +163,10 @@ export INPUTRC=$PWD/.inputrc
 %{python3_sitelib}/pytest/
 
 %changelog
+* Tue Mar 19 2024 Lumír Balhar <lbalhar@redhat.com> - 6.2.2-7
+- Allow pluggy >=1.0
+Resolves: RHEL-29656
+
 * Tue Feb 22 2022 Tomas Orsava <torsava@redhat.com> - 6.2.2-6
 - Add gating configuration and a simple smoke test
 - Related: rhbz#1950291
